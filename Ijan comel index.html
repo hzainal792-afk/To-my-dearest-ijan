@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Complete Gift Site for My Love 💖</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load a cute handwritten font: Caveat -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght=400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- GLOBAL & HOME STYLES (INDEX.HTML) --- */
+        body {
+            font-family: 'Caveat', cursive;
+            background-color: #ffe6f0; /* Soft Pastel Pink Background */
+            color: #4a235a; /* Deep purple text for contrast */
+        }
+        .title-text { font-size: 3.5rem; }
+        .subtitle-text { font-size: 1.8rem; }
+        @media (max-width: 640px) { .title-text { font-size: 2.5rem; } }
+        .gift-card {
+            background-color: #ffffff;
+            border: 6px solid #f6e0fa; /* Lavender border */
+        }
+        .nav-button { transition: all 0.3s ease-in-out; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .nav-button:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15); }
+        
+        /* --- PHOTO GALLERY STYLES (PHOTOS.HTML) --- */
+        #photos-page { background-color: #f0f8ff; /* Soft Light Blue/Creamy White Background */ }
+        .gallery-title { font-size: 3rem; }
+        .photo-card {
+            background-color: white;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            transform: rotate(var(--rotation));
+        }
+        .photo-card:hover { transform: scale(1.03) rotate(0deg) !important; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; }
+        .photo-img { aspect-ratio: 4/3; object-fit: cover; }
+
+        /* --- MUSIC STYLES (MUSIC.HTML) --- */
+        #music-page { background-color: #f6e0fa; /* Soft Lavender Background */ }
+        .music-card { background-color: #ffffff; border: 5px dashed #d6bcfa; }
+        .music-title { font-size: 3rem; }
+        .story-section { background-color: #f3e8ff; }
+        
+        /* --- LETTERS STYLES (LETTERS.HTML) --- */
+        #letters-page { background-color: #fffaf0; /* Creamy White Background */ }
+        .letters-title { font-size: 3rem; }
+        .envelope-card {
+            background-color: #fef08a;
+            border: 4px solid #f97316;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .envelope-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); }
+        .modal-overlay { background-color: rgba(0, 0, 0, 0.5); }
+        .modal-content { background-color: #ffffff; border: 3px solid #fbcfe8; }
+
+        /* General container for all pages (sets the max width for the whole app) */
+        .app-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start; /* Start from the top */
+            justify-content: center;
+            padding: 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="p-0">
+
+    <div class="app-container">
+
+        <!-- ============================================== -->
+        <!-- 1. HOME PAGE SECTION -->
+        <!-- ============================================== -->
+        <section id="home-page" class="w-full h-full flex items-center justify-center p-4">
+            <main class="gift-card w-full max-w-lg mx-auto p-8 sm:p-10 rounded-3xl shadow-2xl space-y-8 text-center">
+                <header>
+                    <h1 class="title-text font-bold leading-none mb-2">
+                        Welcome, My Amazing Girl! 🌹
+                    </h1>
+                    <p class="subtitle-text text-purple-500">
+                        This little website is just for you.
+                    </p>
+                </header>
+
+                <div class="flex justify-center">
+                    <img src="https://placehold.co/300x200/fecaca/9c1851?text=Your+Favorite+Photo+Here" 
+                         onerror="this.src='https://placehold.co/300x200/fecaca/9c1851?text=A+Cute+Placeholder'"
+                         alt="A place for your favorite photo or GIF" 
+                         class="w-full max-w-xs h-auto rounded-xl shadow-xl transform rotate-1 border-4 border-pink-200">
+                </div>
+
+                <section class="text-lg leading-relaxed pt-4">
+                    <p>
+                        I wanted to create a special corner of the internet just for us, filled with all the things that make our relationship the best. I hope looking through these pages makes you smile as much as you make me smile every day.
+                    </p>
+                </section>
+
+                <nav class="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Updated links to use JavaScript function -->
+                    <a href="javascript:void(0)" onclick="showPage('photos-page')" class="nav-button block bg-pink-400 text-white py-3 px-4 rounded-full font-bold text-xl uppercase tracking-wider hover:bg-pink-500">
+                        📷 Photo Album
+                    </a>
+
+                    <a href="javascript:void(0)" onclick="showPage('music-page')" class="nav-button block bg-purple-400 text-white py-3 px-4 rounded-full font-bold text-xl uppercase tracking-wider hover:bg-purple-500">
+                        🎶 Our Soundtrack
+                    </a>
+                    
+                    <a href="javascript:void(0)" onclick="showPage('letters-page')" class="nav-button block bg-red-400 text-white py-3 px-4 rounded-full font-bold text-xl uppercase tracking-wider hover:bg-red-500">
+                        💌 Open Your Letters
+                    </a>
+                </nav>
+
+                <footer class="text-xs text-gray-500 pt-6">
+                    <p>Made with love, just for you.</p>
+                </footer>
+            </main>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- 2. PHOTO GALLERY SECTION -->
+        <!-- ============================================== -->
+        <section id="photos-page" class="hidden w-full h-full p-4">
+            <div class="max-w-6xl mx-auto">
+                <header class="text-center mb-8">
+                    <h1 class="gallery-title font-bold text-pink-500 mt-4 mb-2">
+                        Our Wonderful Memories
+                    </h1>
+                    <p class="text-xl text-purple-600">
+                        Every picture tells a piece of our story.
+                    </p>
+                    <a href="javascript:void(0)" onclick="showPage('home-page')" class="inline-block mt-4 bg-red-300 text-white py-2 px-6 rounded-full font-bold text-lg hover:bg-red-400 transition nav-button">
+                        &larr; Back to Home
+                    </a>
+                </header>
+
+                <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pb-12">
+                    <!-- Photo Card 1: Replace the src="..." with your actual image URL -->
+                    <div class="photo-card rounded-xl" style="--rotation: -3deg;">
+                        <img class="photo-img w-full rounded-lg" 
+                            src="https://placehold.co/600x450/fff2f2/cc0000?text=Trip+to+the+Beach" 
+                            alt="Memory from our beach trip">
+                        <p class="text-center mt-3 text-lg font-semibold text-gray-700">
+                            That perfect sunset at the beach! 🌅
+                        </p>
+                    </div>
+
+                    <!-- Photo Card 2 -->
+                    <div class="photo-card rounded-xl" style="--rotation: 2deg;">
+                        <img class="photo-img w-full rounded-lg" 
+                            src="https://placehold.co/600x450/f0f9ff/0066cc?text=Cozy+Movie+Night" 
+                            alt="Cozy movie night memory">
+                        <p class="text-center mt-3 text-lg font-semibold text-gray-700">
+                            Our first movie night in. So cozy! 🍿
+                        </p>
+                    </div>
+
+                    <!-- Photo Card 3 -->
+                    <div class="photo-card rounded-xl" style="--rotation: -1deg;">
+                        <img class="photo-img w-full rounded-lg" 
+                            src="https://placehold.co/600x450/f5fff0/009933?text=Hiking+Adventure" 
+                            alt="Picture from a hiking adventure">
+                        <p class="text-center mt-3 text-lg font-semibold text-gray-700">
+                            The day we conquered that silly hill. 💪
+                        </p>
+                    </div>
+                    
+                    <!-- Photo Card 4 -->
+                    <div class="photo-card rounded-xl" style="--rotation: 4deg;">
+                        <img class="photo-img w-full rounded-lg" 
+                            src="https://placehold.co/600x450/fff0f8/990066?text=Sweet+Selfie" 
+                            alt="Sweet selfie together">
+                        <p class="text-center mt-3 text-lg font-semibold text-gray-700">
+                            Just a random Tuesday selfie. Love you!
+                        </p>
+                    </div>
+
+                    <!-- Photo Card 5 -->
+                    <div class="photo-card rounded-xl" style="--rotation: -5deg;">
+                        <img class="photo-img w-full rounded-lg" 
+                            src="https://placehold.co/600x450/ffffea/aa8800?text=Dinner+Date" 
+                            alt="Dinner date photo">
+                        <p class="text-center mt-3 text-lg font-semibold text-gray-700">
+                            Best food, better company. 🍝
+                        </p>
+                    </div>
+
+                    <!-- Photo Card 6 (Add more photos as needed!) -->
+                    <div class="photo-card rounded-xl" style="--rotation: 0deg;">
+                        <img class="photo-img w-full rounded-lg" 
+                            src="https://placehold.co/600x450/e0f7ff/0088aa?text=Anniversary+Pic" 
+                            alt="Anniversary photo">
+                        <p class="text-center mt-3 text-lg font-semibold text-gray-700">
+                            Celebrating us! Cheers to forever. 🥂
+                        </p>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- 3. MUSIC PLAYLIST SECTION -->
+        <!-- ============================================== -->
+        <section id="music-page" class="hidden w-full h-full p-4 flex flex-col items-center">
+            <header class="text-center w-full max-w-xl mb-8">
+                <h1 class="music-title font-bold text-purple-600 mt-4 mb-2">
+                    Our Soundtrack
+                </h1>
+                <p class="text-xl text-pink-500">
+                    Songs that remind me of you, us, and everything in between.
+                </p>
+                <a href="javascript:void(0)" onclick="showPage('home-page')" class="inline-block mt-4 bg-red-400 text-white py-2 px-6 rounded-full font-bold text-lg hover:bg-red-500 transition nav-button">
+                    &larr; Back to Home
+                </a>
+            </header>
+
+            <main class="music-card w-full max-w-xl mx-auto p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
+                <section>
+                    <h2 class="text-2xl font-bold mb-3 text-center">Listen Now!</h2>
+                    <div class="bg-gray-100 h-64 flex items-center justify-center rounded-xl p-4">
+                        <p class="text-gray-500 text-center">
+                            [PLACEHOLDER FOR EMBEDDED MUSIC PLAYER]<br>
+                            e.g., Spotify Playlist or YouTube Video Embed Code
+                        </p>
+                    </div>
+                </section>
+
+                <section class="space-y-4 pt-4">
+                    <h2 class="text-2xl font-bold text-center border-b-2 border-pink-300 pb-2">Why These Songs?</h2>
+                    
+                    <div class="story-section p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold text-purple-700">🎧 Song Title 1: "Our Song"</h3>
+                        <p class="text-base mt-1">
+                            This one always makes me smile. It was playing on the radio during that long road trip we took, and every lyric feels like it was written just for us. It's truly our anthem.
+                        </p>
+                    </div>
+
+                    <div class="story-section p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold text-purple-700">🎧 Song Title 2: "The First Dance"</h3>
+                        <p class="text-base mt-1">
+                            Remember that night? I felt like I was the only person in the world, and this slow tune was the magic that made it happen. It captures that perfect moment.
+                        </p>
+                    </div>
+                    
+                    <div class="story-section p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold text-purple-700">🎧 Song Title 3: "Just Because"</h3>
+                        <p class="text-base mt-1">
+                            This is my favorite song to listen to when I'm missing you. It's cheerful, bright, and reminds me that I'll see your face soon!
+                        </p>
+                    </div>
+                </section>
+            </main>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- 4. LOVE LETTERS SECTION -->
+        <!-- ============================================== -->
+        <section id="letters-page" class="hidden w-full h-full p-4 flex flex-col items-center">
+             <header class="text-center w-full max-w-2xl mb-8">
+                <h1 class="letters-title font-bold text-red-500 mt-4 mb-2">
+                    Your Secret Mailbox
+                </h1>
+                <p class="text-xl text-purple-600">
+                    Click an envelope to reveal a message written just for you!
+                </p>
+                <a href="javascript:void(0)" onclick="showPage('home-page')" class="inline-block mt-4 bg-pink-400 text-white py-2 px-6 rounded-full font-bold text-lg hover:bg-pink-500 transition nav-button">
+                    &larr; Back to Home
+                </a>
+            </header>
+
+            <main class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pb-12">
+                <!-- Envelope Grid (uses JS functions) -->
+                <div class="envelope-card p-6 rounded-xl text-center" onclick="openLetter(1)">
+                    <span class="text-4xl">💌</span>
+                    <h3 class="text-xl font-bold mt-2 text-orange-700">The Day We Met</h3>
+                    <p class="text-sm">A short note about the beginning.</p>
+                </div>
+
+                <div class="envelope-card p-6 rounded-xl text-center" onclick="openLetter(2)">
+                    <span class="text-4xl">💌</span>
+                    <h3 class="text-xl font-bold mt-2 text-orange-700">Reasons I Love You</h3>
+                    <p class="text-sm">Why you're my favorite human.</p>
+                </div>
+
+                <div class="envelope-card p-6 rounded-xl text-center" onclick="openLetter(3)">
+                    <span class="text-4xl">💌</span>
+                    <h3 class="text-xl font-bold mt-2 text-orange-700">Looking Forward</h3>
+                    <p class="text-sm">A little peek at our tomorrow.</p>
+                </div>
+            </main>
+
+            <!-- Modal for displaying the letter content (Hidden by default) -->
+            <div id="letterModal" class="modal-overlay fixed inset-0 hidden items-center justify-center p-4 z-50">
+                <div class="modal-content w-full max-w-lg p-8 rounded-2xl shadow-2xl relative">
+                    <h2 id="modalTitle" class="text-3xl font-bold text-red-600 mb-4 border-b pb-2"></h2>
+                    <p id="modalBody" class="text-xl leading-relaxed whitespace-pre-line"></p>
+                    <button onclick="closeLetter()" class="mt-6 bg-pink-500 text-white py-2 px-6 rounded-full font-bold text-lg hover:bg-pink-600 transition">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- End of app-container -->
+
+    <!-- ============================================== -->
+    <!-- JAVASCRIPT LOGIC (Navigation and Letters) -->
+    <!-- ============================================== -->
+    <script>
+        // --- NAVIGATION LOGIC ---
+        const pageIds = ['home-page', 'photos-page', 'music-page', 'letters-page'];
+        const allPages = pageIds.map(id => document.getElementById(id));
+        
+        function showPage(pageId) {
+            allPages.forEach(page => {
+                if (page.id === pageId) {
+                    page.classList.remove('hidden');
+                } else {
+                    page.classList.add('hidden');
+                }
+            });
+            // Scroll to top when navigating
+            window.scrollTo(0, 0);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize: Show the home page and hide all others
+            showPage('home-page');
+
+            // Apply random photo rotations for the scrapbook effect (on load)
+            const cards = document.querySelectorAll('.photo-card');
+            cards.forEach(card => {
+                const rotation = (Math.random() * 8) - 4; // Between -4deg and +4deg
+                card.style.setProperty('--rotation', `${rotation}deg`);
+            });
+        });
+
+
+        // --- LETTERS MODAL LOGIC (LETTERS.HTML) ---
+        const letters = {
+            1: {
+                title: "Thinking of The Day We Met...",
+                body: "I still remember the butterflies I had when I first saw you. It felt like the entire room went silent, and you were the only person who mattered. That feeling has never left, and I am so grateful for that day, and for the amazing journey we've been on since. You are magic."
+            },
+            2: {
+                title: "Just a Few Reasons I Love You",
+                body: "1. Your laugh, which is the best sound in the world.\n2. How kind you are to everyone you meet.\n3. The way you look at me when you think I'm not looking.\n4. Your determination and strength.\n5. The quiet mornings we spend together.\n\n(There are millions more, but this is a start!)"
+            },
+            3: {
+                title: "A Little Note About Our Future",
+                body: "I can't wait for all the adventures we still have ahead of us—the trips we'll take, the goals we'll crush, and the quiet, everyday moments we'll share. Every day with you is my favorite future. Let's make lots of beautiful memories, starting now!"
+            }
+        };
+
+        const modal = document.getElementById('letterModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        function openLetter(id) {
+            const letter = letters[id];
+            if (letter) {
+                modalTitle.textContent = letter.title;
+                modalBody.textContent = letter.body;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        function closeLetter() {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Close modal if user clicks out
